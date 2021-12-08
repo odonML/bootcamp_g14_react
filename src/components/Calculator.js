@@ -1,13 +1,15 @@
 import React from "react";
 
-function runOperation({operation, valueOne, valueTwo}){
+function runOperation({operation, ...values}){
+    const {valueOne, valueTwo} = values;
     const num1 = Number(valueOne);
     const num2 = Number(valueTwo);
+    const arrayValues = Object.values(values);
 
     if(isNaN(num1) || isNaN(num2)) return "uno de los valores no es un numero";
 
     let obj = {
-        suma: (num1+num2),
+        suma: (num1 + num2),
         resta: (num1-num2),
         division: (num1/num2),
         multiplicacion: (num1*num2),
@@ -17,13 +19,7 @@ function runOperation({operation, valueOne, valueTwo}){
         return obj[operation];
     }
 }
-function nValues({operation, ...values}){
-    const numbers = Object.values(values);
-    const result = numbers.map(e => {
-        Number(e)
-    })
-    console.log(result)
-}
+
 
 
 

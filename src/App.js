@@ -21,7 +21,7 @@ function App() {
         </a>
       <Greeting name="Odon" lastName="lozada"/>
       {/* <Calculator operation="suma" valueOne="4" valueTwo="2" /> */}
-      <Calculator operation="resta" valueOne="4" valueTwo="2" valueThree="10"/>
+      <Calculator operation="resta" valueOne="4" valueTwo="2" valueThree="-"/>
       </header>
 
     </div>
