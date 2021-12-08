@@ -1,5 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
+import Calculator from './components/Calculator';
+import Greeting from './components/Greeting';
+import logo from './logo.svg';
 
 function App() {
   return (
@@ -17,7 +19,11 @@ function App() {
         >
           Learn React
         </a>
+      <Greeting name="Odon" lastName="lozada"/>
+      {/* <Calculator operation="suma" valueOne="4" valueTwo="2" /> */}
+      <Calculator operation="resta" valueOne="4" valueTwo="2" valueThree="10"/>
       </header>
+
     </div>
   );
 }
