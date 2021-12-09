@@ -1,6 +1,6 @@
 import './App.css';
-import Calculator from './components/Calculator';
-import Greeting from './components/Greeting';
+import Counter from './components/Counter';
+import Navbar from './components/Navbar';
 import logo from './logo.svg';
 
 function App() {
@@ -19,7 +19,9 @@ function App() {
         >
           Learn React
         </a>
-      <Greeting name="Odon" lastName="lozada"/>
+      {/* <Greeting name="Odon" lastName="lozada"/> */}
+      <Counter/>
+      <Navbar />
       {/* <Calculator operation="suma" valueOne="4" valueTwo="2" />
       <Calculator operation="resta" valueOne="4" valueTwo="2" valueThree="-"/> */}
       </header>
