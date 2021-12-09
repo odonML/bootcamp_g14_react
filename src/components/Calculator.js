@@ -16,7 +16,6 @@ import React from "react";
 //     }
 // }
 
-
 function runOperation({ operation, ...values }) {
     try {
         const numberValues = toNumberValues(values);
