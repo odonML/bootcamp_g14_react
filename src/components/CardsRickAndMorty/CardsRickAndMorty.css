@@ -1,0 +1,16 @@
+.card{
+    width: 35%;
+    display: flex;
+    margin: 10px;
+    border: solid 1px #61dafb;
+}
+p{
+    margin: 0px;
+    font-size: 12px;
+}
+.card-img{
+    width: 100px;
+}
+.card-content{
+    padding: 5px;
+}

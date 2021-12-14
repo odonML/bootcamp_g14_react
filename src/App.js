@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import CardsRickAndMorty from "./components/CardsRickAndMorty";
 import Navbar from "./components/Navbar";
 import logo from "./logo.svg";
 
@@ -8,20 +9,16 @@ function App() {
 
     useEffect(() => {
         const getUsers = async () => {
-            const response = await fetch("users.json");
-            const data = await response.json();
-            console.log(data);
-            setUsers(data)
+            const response = await fetch("https://rickandmortyapi.com/api/character");
+            const {info, results} = await response.json();
+            console.log(results);
+            setUsers(results)
         }
         getUsers();
     }, []);
 
-    const usersUI = users.map((user) => (
-        <div key={user.id}>
-            <h1>
-                {user.firstName} {user.lastName}
-            </h1>
-        </div>
+    const usersUI = users.map(({id, name, status, species, image, episode}) => (
+       < CardsRickAndMorty key={id} name={name} status={status} species={species} img={image} episode={episode}/>
     ));
 
     return (
@@ -29,7 +26,9 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <Navbar />
+                <div className="personajes">
                 {usersUI}
+                </div>
             </header>
         </div>
     );
