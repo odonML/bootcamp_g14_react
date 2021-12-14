@@ -1,7 +1,7 @@
 import React from 'react';
 import "./CardsRickAndMorty.css";
 
-function CardsRickAndMorty({id, name, status, species, img, episode}){
+function CardsRickAndMorty({name, status, species, img, episode}){
     const ep = episode.length;
     return(
        <div className='card'>
@@ -11,7 +11,6 @@ function CardsRickAndMorty({id, name, status, species, img, episode}){
                 <p>Status: {status}</p>
                 <p>Especie: {species}</p>
                 <p>Episodios: {ep}</p>
-
             </div>
        </div>
     )
