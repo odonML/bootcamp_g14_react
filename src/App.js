@@ -1,40 +1,19 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import logo from "./logo.svg";
-import { useState, useEffect } from "react";
-
-const _users = [
-    {
-        id: 1,
-        firstName: "Selene",
-        lastName: "Chavez",
-    },
-    {
-        id: 2,
-        firstName: "Omar",
-        lastName: "Mijangos",
-    },
-    {
-        id: 3,
-        firstName: "Luis",
-        lastName: "Balán",
-    },
-    {
-        id: 4,
-        firstName: "Odon",
-        lastName: "Balán",
-    },
-];
 
 function App() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        // await fetch()
-        setTimeout(() => {
-            const response = _users;
-            setUsers(response);
-        }, 3000);
+        const getUsers = async () => {
+            const response = await fetch("users.json");
+            const data = await response.json();
+            console.log(data);
+            setUsers(data)
+        }
+        getUsers();
     }, []);
 
     const usersUI = users.map((user) => (
