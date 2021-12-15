@@ -5,7 +5,7 @@ function CardsRickAndMorty({name, status, species, img, episode}){
     const ep = episode.length;
     return(
        <div className='card'>
-           <img className='card-img' src={img}/>
+           <img className='card-img' alt={name} src={img}/>
             <div className='card-content'>
                 <p>Nombre: {name}</p>
                 <p>Status: {status}</p>

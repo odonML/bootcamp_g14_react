@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import CardsRickAndMorty from './CardsRickAndMorty/index';
+import React, { useEffect, useState } from 'react';
 import ButtonPagination from './ButtonPagination';
+import CardsRickAndMorty from './CardsRickAndMorty/index';
 import "./RickAndMorty.css";
 
 function RickAndMorty() {
@@ -8,24 +8,24 @@ function RickAndMorty() {
     const [endpoint, setEndpoint] = useState("https://rickandmortyapi.com/api/character");
     const [nextpoint, setNextpoint] = useState("");
     const [prevpoint, setPrevpoint] = useState("");
-
-
+    
+    
     const getUsers = async () => {
         const response = await fetch(endpoint);
         const {info, results} = await response.json();
-
+        
         const {next, prev} = info;
-        if(next !== null) setNextpoint(next);
-        if(prev !== null) setPrevpoint(prev);
+        setNextpoint(next);
+        setPrevpoint(prev);
 
         setUsers(results)
     }    
-    
+
     const nextUpdate = () =>{
-        setEndpoint(nextpoint)
+        if(nextpoint !== null) setEndpoint(nextpoint)
     }
     const prevUpdate = () =>{
-        setEndpoint(prevpoint)
+        if(prevpoint !== null) setEndpoint(prevpoint)
     }
     
     useEffect(() => {
@@ -46,8 +46,9 @@ function RickAndMorty() {
                 {usersUI}
                 </div>
                 <div className="buttons">
-                    <ButtonPagination operation={prevUpdate} text={"Prev"} />
-                    <ButtonPagination operation={nextUpdate} text={"Next"} />
+                    { prevpoint !== null? <ButtonPagination operation={prevUpdate} text={"Prev"} /> : ""}
+                    { nextpoint !== null? <ButtonPagination operation={nextUpdate} text={"Next"} /> : ""}
+                    
                 </div>
         </div>
     )
