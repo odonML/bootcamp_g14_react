@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
+import Button from "../../components/Button";
 import { crearUsuario } from "../../services/user";
 import "./UserNew.css";
-import Button from "../../components/Button";
 
 function UserNew() {
     const [firstName, setFirstName] = useState("");
