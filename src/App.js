@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import CreditCard from "./components/CreditCard";
 
 
 function App() {
 
     return (
-       <CreditCard />
+        <div className="container">
+            <h1>App</h1>
+        </div>
     );
 }
 
