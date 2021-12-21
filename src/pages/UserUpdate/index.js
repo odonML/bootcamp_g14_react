@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
+import React, { useState, useEffect } from "react";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
-import { crearUsuario } from "../../services/user";
-import "./UserNew.css";
+import Button from "../../components/Button";
+import { getUserById, updateUser } from "../../services/user";
+import { useNavigate, useParams } from 'react-router-dom';
 
-function UserNew() {
+function UserUpdate() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [gender, setGender] = useState("");
     const [occupation, setOccupation] = useState("");
     const [birthdate, setBirthdate] = useState("");
     const navigate = useNavigate();
-
     const opGender = [
         {
             opValue: "M",
@@ -29,7 +27,7 @@ function UserNew() {
         },
     ];
 
-    const opOccupation = [
+    const opActivity = [
         {
             opValue: "doctor",
             opText: "Doctor",
@@ -43,22 +41,35 @@ function UserNew() {
             opText: "Desarrollador",
         },
     ];
+    const params = useParams();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(gender);
-        try {
-            await crearUsuario({
-                firstName,
-                lastName,
-                gender,
-                occupation,
-                birthdate,
-            });
-            navigate(`/users`)
-        } catch (err) {
-            console.log(err);
-        }
+        const id =params.userID;
+		const data = {
+			firstName,
+			lastName,
+			gender,
+			occupation,
+			birthdate,
+		};
+		await updateUser(id, data);
+        navigate(`/users/${id}`)
     };
+
+    useEffect(()=>{
+        const get = async () => {
+			const { firstName, lastName, gender, occupation, birthdate } =
+				await getUserById(params.userID);
+			// console.log(response);
+			setFirstName(firstName);
+			setLastName(lastName);
+			setGender(gender);
+			setOccupation(occupation);
+			setBirthdate(birthdate);
+		};
+		get();
+    },[params.userID])
 
     return (
         <div className="form-col">
@@ -85,7 +96,7 @@ function UserNew() {
                 <Select
                     value={occupation}
                     setValue={setOccupation}
-                    options={opOccupation}
+                    options={opActivity}
                     label={"Ocupacion"}
                 />
                 <Input
@@ -95,10 +106,10 @@ function UserNew() {
                     setValue={setBirthdate}
                     label={"Fecha de nacimiento"}
                 />
-                <Button type={"submit"} text={"Crear"} />
+                <Button type={"submit"} text={"Actualizar"} />
             </form>
         </div>
     );
 }
 
-export default UserNew;
+export default UserUpdate;

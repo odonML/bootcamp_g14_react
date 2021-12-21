@@ -1,13 +1,14 @@
 import React from 'react';
+import UserDataCard from "../UserDataCard";
 
-function UserCard({firstName, lastName, gender, occupation, birthdate}) {
+function UserCard({firstName, lastName, gender, occupation, birthdate, callback=null}) {
     return(
-        <div className='card'>
-            <p>Nombre: {firstName}</p>
-            <p>Apellido: {lastName}</p>
-            <p>Genero: {gender}</p>
-            <p>Ocupacion: {occupation}</p>
-            <p>Fecha de nacimiento: {birthdate}</p>
+        <div onClick={callback} className='card'>
+            <UserDataCard title={"Nombre:"} text={firstName}/>
+			<UserDataCard title={"Apellido:"} text={lastName}/>
+			<UserDataCard title={"Genero:"} text={gender}/>
+			<UserDataCard title={"Ocupacion:"} text={occupation}/>
+			<UserDataCard title={"Fecha de nacimiento:"} text={birthdate}/>
         </div>
     )
 }

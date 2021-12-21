@@ -6,6 +6,11 @@ const getUsers = async () =>{
     return await response.json();
 }
 
+const getUserById = async (id) => {
+    const response = await fetch(`${BASE_URL}users/${id}.json`);
+    return await response.json();
+};
+
 const crearUsuario = async (data) =>{
     const response = await fetch(`${BASE_URL}${USER_PATH}`, {
         method: "POST",
@@ -17,13 +22,28 @@ const crearUsuario = async (data) =>{
     return await response.json();
 }
 
-const getUserById = async (id) => {
-	const response = await fetch(`${BASE_URL}users/${id}.json`);
+const updateUser = async (id, data) =>{
+    const response = await fetch(`${BASE_URL}users/${id}.json`, {
+		method: "PATCH",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+		// body: data,
+	});
 	return await response.json();
-};
+}
+
+const deleteUser = async (id) => {
+    await fetch(`${BASE_URL}users/${id}.json`, {
+		method: "DELETE",
+	});
+}
 
 export {
-    crearUsuario,
     getUsers,
-    getUserById
+    getUserById,
+    crearUsuario,
+    updateUser,
+    deleteUser,
 }

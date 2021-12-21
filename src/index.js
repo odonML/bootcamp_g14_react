@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import "./index.css";
 import Home from './pages/Home/index';
@@ -8,7 +9,8 @@ import UserDetail from './pages/UserDetail/index';
 import UserNew from "./pages/UserNew";
 import Users from "./pages/Users";
 import UsersList from './pages/UsersList';
-import reportWebVitals from "./reportWebVitals";
+import UsersDetailContainer from './pages/UsersDetailContainer/index';
+import UserUpdate from './pages/UserUpdate/index';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -20,7 +22,10 @@ ReactDOM.render(
                     <Route path="users" element={<Users />}>
                         <Route index element={<UsersList />} />
                         <Route path="new" element={<UserNew />} />
-                        <Route path=":userID" element={<UserDetail />} />
+                        <Route path=":userID" element={<UsersDetailContainer />}>
+							<Route index element={<UserDetail />} />
+							<Route path="update" element={<UserUpdate />} />
+						</Route>
                     </Route>
                 </Route>
             </Routes>
