@@ -17,7 +17,13 @@ const crearUsuario = async (data) =>{
     return await response.json();
 }
 
+const getUserById = async (id) => {
+	const response = await fetch(`${BASE_URL}users/${id}.json`);
+	return await response.json();
+};
+
 export {
     crearUsuario,
     getUsers,
+    getUserById
 }

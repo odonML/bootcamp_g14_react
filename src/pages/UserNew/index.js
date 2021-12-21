@@ -58,7 +58,7 @@ function UserNew() {
     };
 
     return (
-        <div className="container form-col">
+        <div className="form-col">
             <h4>Agregar Usuario</h4>
             <form onSubmit={handleSubmit}>
                 <Input

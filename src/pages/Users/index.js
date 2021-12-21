@@ -1,44 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import UsersList from "../../components/UsersList";
-import { getUsers } from "../../services/user";
+import React from "react";
 import "./Users.css";
+import { Link, Outlet } from "react-router-dom";
 
-  function Users() {
-      const [users, setUsers] = useState([]);
-
-      const getUsersUI = async () => {
-          const response = await getUsers();
-          const arrayUsers = await toArray(response)
-          setUsers(arrayUsers);
-      }
-      
-      const toArray = (objPosts) =>{
-        let listPosts = [];
-        for (let key in objPosts) {
-          let obj = {
-            id: key,
-            ...objPosts[key],
-          }
-          listPosts.push(obj);
-        }
-        return listPosts;
-      }
-      
-    useEffect(()=>{
-        getUsersUI();
-    },[])
-
-    console.log(users)
-
+function Users() {
     return (
-        <div className='display'>
-            <div className='content'>
-            <h4>Lista de Usuarios</h4>
-            <UsersList users={users} />
+        <div className="content">
+            <div className="aside">
+                <nav className="side-nav">
+                    <Link className="link side-link" to="">
+                        List users
+                    </Link>
+                    <Link className="link side-link" to="new">
+                        Create user
+                    </Link>
+                </nav>
             </div>
+                <Outlet />
         </div>
-    )
-
+    );
 }
 
 export default Users;

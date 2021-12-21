@@ -1,0 +1,16 @@
+.usersList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.card{
+    width: 45%;
+    height: auto;
+    margin: 5px;
+    border: solid 1px #61dafb;
+}
+p{
+    margin: 5px;
+}

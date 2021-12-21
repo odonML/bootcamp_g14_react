@@ -3,12 +3,14 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #282c34;
     color: #61dafb;
   }
 form{
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 h4{
     margin: 0px;
