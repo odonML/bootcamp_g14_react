@@ -3,8 +3,6 @@ import UsersList from "../../components/UsersList";
 import { getUsers } from "../../services/user";
 import "./Users.css";
 
-
-  
   function Users() {
       const [users, setUsers] = useState([]);
 
@@ -35,7 +33,7 @@ import "./Users.css";
     return (
         <div className='display'>
             <div className='content'>
-            <h4>lista de usuarios Usuarios</h4>
+            <h4>Lista de Usuarios</h4>
             <UsersList users={users} />
             </div>
         </div>
